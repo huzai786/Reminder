@@ -1,3 +1,4 @@
+import os
 from typing import NamedTuple
 
 import pyautogui as pg
@@ -21,14 +22,14 @@ class Person:
         pg.sleep(2)
         r = None
         while r is None:
-            r = pg.locateCenterOnScreen('E:\\Projects\\ongoing_projects\\reminder\\images\\watsapp.png',
+            r = pg.locateCenterOnScreen(os.path.join(os.getcwd(), 'images', 'watsapp.png'),
                                         grayscale=True, confidence=.5)
 
         pg.moveTo(r[0], r[1])
         pg.click()
 
         while True:
-            opened = pg.locateCenterOnScreen('E:\\Projects\\ongoing_projects\\reminder\\images\\chat.png',
+            opened = pg.locateCenterOnScreen(os.path.join(os.getcwd(), 'images', 'chat.png'),
                                         grayscale=True, confidence=.5)
             if opened:
                 break
